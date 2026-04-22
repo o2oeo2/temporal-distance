@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temporal Distance</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- INTRO PAGE -->
+  <div class="page active" id="page-intro">
+    <div class="intro-content">
+      <h1>TEMPORAL DISTANCE</h1>
+      <p>This project visualises the gap between socially accepted time standards and the rhythms of real everyday life.</p>
+      <p class="sub">Enter your daily times and see how your rhythm compares to others.</p>
+      <button onclick="goTo('page-input')">ENTER</button>
+    </div>
+  </div>
+
+  <!-- INPUT PAGE -->
+  <div class="page" id="page-input">
+    <nav>
+      <span class="menu-icon" onclick="toggleMenu()">☰</span>
+      <div class="nav-links" id="nav-links">
+        <a href="#" onclick="goTo('page-intro')">HOME</a>
+        <a href="#" onclick="goTo('page-input')">INPUT</a>
+        <a href="#" onclick="goTo('page-viz')">VISUALIZATION</a>
+        <a href="#" onclick="goTo('page-archive')">DATA ARCHIVE</a>
+      </div>
+    </nav>
+    <div class="input-content">
+      <h2 id="current-section">WAKE UP</h2>
+      <div class="time-display">
+        <div class="time-block">
+          <span class="label">AVERAGE</span>
+          <span class="time" id="avg-display">--:--</span>
+          <span class="sublabel" id="avg-count"></span>
+        </div>
+        <div class="time-block you">
+          <span class="label">YOU</span>
+          <span class="time" id="user-display">--:--</span>
+        </div>
+      </div>
+      <input type="time" id="time-input">
+      <button onclick="submitTime()">SUBMIT</button>
+      <div class="section-nav">
+        <button onclick="prevSection()">←</button>
+        <button onclick="nextSection()">→</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISUALIZATION PAGE -->
+  <div class="page" id="page-viz">
+    <nav>
+      <span class="menu-icon" onclick="toggleMenu()">☰</span>
+      <div class="nav-links" id="nav-links-viz">
+        <a href="#" onclick="goTo('page-intro')">HOME</a>
+        <a href="#" onclick="goTo('page-input')">INPUT</a>
+        <a href="#" onclick="goTo('page-viz')">VISUALIZATION</a>
+        <a href="#" onclick="goTo('page-archive')">DATA ARCHIVE</a>
+      </div>
+    </nav>
+    <div class="viz-content">
+      <h2>VISUALIZATION</h2>
+      <div id="viz-container"></div>
+    </div>
+  </div>
+
+  <!-- DATA ARCHIVE PAGE -->
+  <div class="page" id="page-archive">
+    <nav>
+      <span class="menu-icon" onclick="toggleMenu()">☰</span>
+      <div class="nav-links" id="nav-links-archive">
+        <a href="#" onclick="goTo('page-intro')">HOME</a>
+        <a href="#" onclick="goTo('page-input')">INPUT</a>
+        <a href="#" onclick="goTo('page-viz')">VISUALIZATION</a>
+        <a href="#" onclick="goTo('page-archive')">DATA ARCHIVE</a>
+      </div>
+    </nav>
+    <div class="archive-content">
+      <h2>DATA ARCHIVE</h2>
+      <div id="archive-container"></div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
+
