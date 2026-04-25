@@ -8,84 +8,98 @@
 </head>
 <body>
 
-  <!-- INTRO PAGE -->
-  <div class="page active" id="page-intro">
-    <div class="intro-content">
+  <!-- OVERLAY -->
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+  <!-- SIDE MENU -->
+  <div class="side-menu" id="side-menu">
+    <a href="#" onclick="goTo('page-main'); closeMenu()">MAIN PAGE</a>
+    <a href="#" onclick="goTo('page-intro'); closeMenu()">HOW TO USE</a>
+    <a href="#" onclick="goTo('page-deviation'); closeMenu()">TIME DEVIATION</a>
+    <a href="#" onclick="goTo('page-viz'); closeMenu()">VISUALIZATION</a>
+    <a href="#" onclick="goTo('page-archive'); closeMenu()">DATA ARCHIVE</a>
+  </div>
+
+  <!-- MAIN PAGE -->
+  <div class="page active" id="page-main">
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="main-content">
       <h1>TEMPORAL DISTANCE</h1>
-      <p>This project visualises the gap between socially accepted time standards and the rhythms of real everyday life.</p>
-      <p class="sub">Enter your daily times and see how your rhythm compares to others.</p>
-      <button onclick="goTo('page-input')">ENTER</button>
+      <p class="main-desc">In modern society, daily life follows fixed time standards that feel natural and neutral. Yet individual rhythms often diverge from these expectations. This project visualises the relationship between socially structured time and personal time, allowing viewers to compare their own schedules with collective patterns. It does not seek to correct behaviour, but to create a space for reflection — encouraging individuals to look at their own daily rhythm and reconsider what <strong>"normal" time</strong> means.</p>
+      <button class="enter-btn" onclick="goTo('page-intro')">ENTER TO START</button>
     </div>
   </div>
 
-  <!-- INPUT PAGE -->
-  <div class="page" id="page-input">
-    <nav>
-      <span class="menu-icon" onclick="toggleMenu()">☰</span>
-      <div class="nav-links" id="nav-links">
-        <a href="#" onclick="goTo('page-intro')">HOME</a>
-        <a href="#" onclick="goTo('page-input')">INPUT</a>
-        <a href="#" onclick="goTo('page-viz')">VISUALIZATION</a>
-        <a href="#" onclick="goTo('page-archive')">DATA ARCHIVE</a>
+  <!-- INTRO / HOW TO USE PAGE -->
+  <div class="page" id="page-intro">
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="intro-scroll">
+      <div class="intro-section">
+        <h2>HOW TO USE</h2>
+        <div class="intro-images">
+          <div class="placeholder-img">Example Image 1</div>
+          <div class="placeholder-img">Example Image 2</div>
+        </div>
+        <p class="intro-text" id="intro-text-content">How to use description goes here.</p>
       </div>
-    </nav>
-    <div class="input-content">
-      <h2 id="current-section">WAKE UP</h2>
+      <div class="intro-cta">
+        <button class="enter-btn" onclick="goTo('page-deviation')">GO TO TIME DEVIATION</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIME DEVIATION PAGE -->
+  <div class="page" id="page-deviation">
+    <div class="top-bar">
+      <div class="menu-btn" onclick="toggleMenu()">☰</div>
+      <div class="section-tabs">
+        <span class="tab active-tab" onclick="switchSection(0)">WAKE UP</span>
+        <span class="tab" onclick="switchSection(1)">WORK</span>
+        <span class="tab" onclick="switchSection(2)">SLEEP</span>
+      </div>
+    </div>
+    <div class="top-bar-line"></div>
+    <div class="deviation-content">
+      <h2 id="deviation-title">WAKE UP</h2>
+      <p class="deviation-desc" id="deviation-desc">The time you opened your eyes to begin your day. When do you actually wake up today?</p>
       <div class="time-display">
         <div class="time-block">
-          <span class="label">AVERAGE</span>
-          <span class="time" id="avg-display">--:--</span>
-          <span class="sublabel" id="avg-count"></span>
+          <span class="time-label">USER AVERAGE</span>
+          <span class="time-num" id="avg-display">--:--</span>
         </div>
-        <div class="time-block you">
-          <span class="label">YOU</span>
-          <span class="time" id="user-display">--:--</span>
+        <div class="time-block">
+          <span class="time-label">YOU</span>
+          <span class="time-num you-time" id="user-display">00:00</span>
         </div>
       </div>
-      <input type="time" id="time-input">
-      <button onclick="submitTime()">SUBMIT</button>
-      <div class="section-nav">
-        <button onclick="prevSection()">←</button>
-        <button onclick="nextSection()">→</button>
-      </div>
+      <input type="time" id="time-input" onchange="updateUserDisplay()">
+      <button class="submit-btn" onclick="submitTime()">SUBMIT</button>
+      <p class="submission-count" id="submission-count"></p>
     </div>
   </div>
 
   <!-- VISUALIZATION PAGE -->
   <div class="page" id="page-viz">
-    <nav>
-      <span class="menu-icon" onclick="toggleMenu()">☰</span>
-      <div class="nav-links" id="nav-links-viz">
-        <a href="#" onclick="goTo('page-intro')">HOME</a>
-        <a href="#" onclick="goTo('page-input')">INPUT</a>
-        <a href="#" onclick="goTo('page-viz')">VISUALIZATION</a>
-        <a href="#" onclick="goTo('page-archive')">DATA ARCHIVE</a>
+    <div class="top-bar sticky-bar">
+      <div class="menu-btn" onclick="toggleMenu()">☰</div>
+      <div class="viz-type-tabs">
+        <span class="tab active-tab" onclick="switchVizType('line')">LINE</span>
+        <span class="tab" onclick="switchVizType('heatmap')">HEATMAP</span>
       </div>
-    </nav>
-    <div class="viz-content">
-      <h2>VISUALIZATION</h2>
-      <div id="viz-container"></div>
     </div>
+    <div class="top-bar-line"></div>
+    <div class="viz-content" id="viz-content"></div>
   </div>
 
   <!-- DATA ARCHIVE PAGE -->
   <div class="page" id="page-archive">
-    <nav>
-      <span class="menu-icon" onclick="toggleMenu()">☰</span>
-      <div class="nav-links" id="nav-links-archive">
-        <a href="#" onclick="goTo('page-intro')">HOME</a>
-        <a href="#" onclick="goTo('page-input')">INPUT</a>
-        <a href="#" onclick="goTo('page-viz')">VISUALIZATION</a>
-        <a href="#" onclick="goTo('page-archive')">DATA ARCHIVE</a>
-      </div>
-    </nav>
-    <div class="archive-content">
-      <h2>DATA ARCHIVE</h2>
-      <div id="archive-container"></div>
+    <div class="top-bar sticky-bar">
+      <div class="menu-btn" onclick="toggleMenu()">☰</div>
     </div>
+    <div class="top-bar-line"></div>
+    <div class="archive-content" id="archive-content"></div>
   </div>
 
   <script type="module" src="script.js"></script>
 </body>
 </html>
-
