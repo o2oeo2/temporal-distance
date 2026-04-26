@@ -824,6 +824,12 @@ body {
   padding-top: 32px;
 }
 @media (max-width: 480px) {
+  .result-popup {
+    overflow-y: auto;
+    padding: 20px 0;
+    box-sizing: border-box;
+  }
+
   .result-box {
     padding: 32px 24px;
     min-width: unset;
