@@ -835,8 +835,9 @@ body {
     letter-spacing: 1px;
   }
   .result-popup {
-    padding: 24px 0;
-  }
+  padding: 24px 0;
+  align-items: center;
+}
   .result-box {
     padding: 32px 24px;
     min-width: unset;
