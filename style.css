@@ -262,7 +262,7 @@ body {
 }
 
 .deviation-desc {
-  font-size: clamp(12px, 1.5vw, 14px);
+   font-size: clamp(13px, 3.5vw, 15px);
   color: #888;
   line-height: 1.7;
   margin-bottom: 40px;
