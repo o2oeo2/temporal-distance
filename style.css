@@ -829,9 +829,10 @@ body {
 }
 @media (max-width: 480px) {
   .main-content {
-    padding: 60px 24px;
-    gap: 24px;
-  }
+  padding: 40px 24px 100px;
+  gap: 24px;
+  min-height: unset;
+}
 
   .main-content h1 {
     font-size: 22px;
