@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Temporal Distance</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400&family=DM+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- OVERLAY -->
   <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
-  <!-- SIDE MENU -->
   <div class="side-menu" id="side-menu">
     <a href="#" onclick="goTo('page-main'); closeMenu()">MAIN PAGE</a>
     <a href="#" onclick="goTo('page-intro'); closeMenu()">HOW TO USE</a>
@@ -22,28 +21,43 @@
 
   <!-- MAIN PAGE -->
   <div class="page active" id="page-main">
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="menu-btn" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
     <div class="main-content">
       <h1>TEMPORAL DISTANCE</h1>
       <p class="main-desc">In modern society, daily life follows fixed time standards that feel natural and neutral. Yet individual rhythms often diverge from these expectations. This project visualises the relationship between socially structured time and personal time, allowing viewers to compare their own schedules with collective patterns. It does not seek to correct behaviour, but to create a space for reflection — encouraging individuals to look at their own daily rhythm and reconsider what <strong>"normal" time</strong> means.</p>
-      <button class="enter-btn" onclick="goTo('page-intro')">ENTER TO START</button>
+      <button class="enter-btn" onclick="goTo('page-intro')">ENTER</button>
     </div>
   </div>
 
-  <!-- INTRO / HOW TO USE PAGE -->
+  <!-- HOW TO USE PAGE -->
   <div class="page" id="page-intro">
-    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="menu-btn" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
     <div class="intro-scroll">
       <div class="intro-section">
         <h2>HOW TO USE</h2>
-        <div class="intro-images">
-          <div class="placeholder-img">Example Image 1</div>
-          <div class="placeholder-img">Example Image 2</div>
+        <p class="intro-desc">This project visualises the gap between socially accepted time standards and individual daily rhythms. There is no right or wrong — only difference.</p>
+        <div class="intro-steps">
+          <div class="intro-step">
+            <span class="step-num">01</span>
+            <p>Enter your wake up, work, and sleep times in the TIME DEVIATION section.</p>
+          </div>
+          <div class="intro-step">
+            <span class="step-num">02</span>
+            <p>See how your times compare to the collective average of all participants.</p>
+          </div>
+          <div class="intro-step">
+            <span class="step-num">03</span>
+            <p>Explore the VISUALIZATION page to see the full pattern of submissions.</p>
+          </div>
         </div>
-        <p class="intro-text" id="intro-text-content">How to use description goes here.</p>
+        <p class="intro-note">All times are based on a 24-hour format (e.g. 18:00 for 6PM). Your data is anonymous and contributes to the collective average.</p>
       </div>
       <div class="intro-cta">
-        <button class="enter-btn" onclick="goTo('page-deviation')">GO TO TIME DEVIATION</button>
+        <button class="enter-btn" onclick="goTo('page-deviation')">START</button>
       </div>
     </div>
   </div>
@@ -51,7 +65,9 @@
   <!-- TIME DEVIATION PAGE -->
   <div class="page" id="page-deviation">
     <div class="top-bar">
-      <div class="menu-btn" onclick="toggleMenu()">☰</div>
+      <div class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
       <div class="section-tabs">
         <span class="tab active-tab" onclick="switchSection(0)">WAKE UP</span>
         <span class="tab" onclick="switchSection(1)">WORK</span>
@@ -61,30 +77,54 @@
     <div class="top-bar-line"></div>
     <div class="deviation-content">
       <h2 id="deviation-title">WAKE UP</h2>
-      <p class="deviation-desc" id="deviation-desc">The time you opened your eyes to begin your day. When do you actually wake up today?</p>
+      <p class="deviation-desc" id="deviation-desc">The time you opened your eyes to begin your day.<br>When do you actually wake up today?</p>
       <div class="time-display">
         <div class="time-block">
           <span class="time-label">USER AVERAGE</span>
           <span class="time-num" id="avg-display">--:--</span>
+          <span class="submission-count" id="submission-count"></span>
         </div>
         <div class="time-block">
           <span class="time-label">YOU</span>
-          <span class="time-num you-time" id="user-display">00:00</span>
+          <span class="time-num you-time" id="user-display" onclick="startInput()">00:00</span>
+          <span class="input-hint" id="input-hint">Input</span>
         </div>
       </div>
-      <input type="time" id="time-input" onchange="updateUserDisplay()">
       <button class="submit-btn" onclick="submitTime()">SUBMIT</button>
-      <p class="submission-count" id="submission-count"></p>
+    </div>
+  </div>
+
+  <!-- SUBMIT RESULT POPUP -->
+  <div class="result-popup" id="result-popup">
+    <div class="result-box">
+      <div class="result-row">
+        <span class="result-label">YOUR TIME</span>
+        <span class="result-val" id="result-your-time">--:--</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">USER AVERAGE</span>
+        <span class="result-val" id="result-avg-time">--:--</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">DIFFERENCE</span>
+        <span class="result-val" id="result-diff">--</span>
+      </div>
+      <div class="result-btns">
+        <button class="enter-btn" onclick="goTo('page-viz'); closeResultPopup()">VISUALIZATION</button>
+        <button class="enter-btn" onclick="closeResultPopup()">BACK</button>
+      </div>
     </div>
   </div>
 
   <!-- VISUALIZATION PAGE -->
   <div class="page" id="page-viz">
     <div class="top-bar sticky-bar">
-      <div class="menu-btn" onclick="toggleMenu()">☰</div>
-      <div class="viz-type-tabs">
-        <span class="tab active-tab" onclick="switchVizType('line')">LINE</span>
-        <span class="tab" onclick="switchVizType('heatmap')">HEATMAP</span>
+      <div class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="section-tabs">
+        <span class="tab active-tab" id="tab-line" onclick="switchVizType('line')">LINE</span>
+        <span class="tab" id="tab-heatmap" onclick="switchVizType('heatmap')">HEATMAP</span>
       </div>
     </div>
     <div class="top-bar-line"></div>
@@ -94,7 +134,9 @@
   <!-- DATA ARCHIVE PAGE -->
   <div class="page" id="page-archive">
     <div class="top-bar sticky-bar">
-      <div class="menu-btn" onclick="toggleMenu()">☰</div>
+      <div class="menu-btn" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
     </div>
     <div class="top-bar-line"></div>
     <div class="archive-content" id="archive-content"></div>
