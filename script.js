@@ -114,21 +114,27 @@ function startInput() {
   inputMode = true;
   currentInput = '';
   const el = document.getElementById('user-display');
-  el.textContent = '--:--';
   el.classList.add('editing');
+
+  // 숨겨진 input 만들기
+  let hiddenInput = document.getElementById('hidden-time-input');
+  if (!hiddenInput) {
+    hiddenInput = document.createElement('input');
+    hiddenInput.type = 'text';
+    hiddenInput.inputMode = 'numeric';
+    hiddenInput.id = 'hidden-time-input';
+    hiddenInput.style.cssText = 'position:fixed;opacity:0;top:0;left:0;width:1px;height:1px;';
+    document.body.appendChild(hiddenInput);
+  }
+
+  hiddenInput.value = '';
+  hiddenInput.focus();
   document.getElementById('input-hint').textContent = 'Type time (e.g. 18:00)';
 
-  document.onkeydown = (e) => {
-    if (!inputMode) return;
-    if (e.key >= '0' && e.key <= '9') {
-      if (currentInput.length < 4) {
-        currentInput += e.key;
-        updateInputDisplay();
-      }
-    } else if (e.key === 'Backspace') {
-      currentInput = currentInput.slice(0, -1);
-      updateInputDisplay();
-    }
+  hiddenInput.oninput = (e) => {
+    currentInput = hiddenInput.value.replace(/\D/g, '').slice(0, 4);
+    hiddenInput.value = currentInput;
+    updateInputDisplay();
   };
 }
 
