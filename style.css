@@ -828,10 +828,15 @@ body {
   padding-top: 32px;
 }
 @media (max-width: 480px) {
-  @media (max-width: 480px) {
+  .main-content {
+    padding: 60px 24px;
+    gap: 24px;
+  }
+
   .main-content h1 {
-    font-size: 28px;
+    font-size: 22px;
     letter-spacing: 1px;
+    white-space: nowrap;
   }
   .result-popup {
     padding: 24px 0;
@@ -846,4 +851,5 @@ body {
   .result-val {
     font-size: 28px;
   }
+  
 }
