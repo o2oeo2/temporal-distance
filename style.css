@@ -262,21 +262,15 @@ body {
 }
 
 .deviation-desc {
-  font-size: 14px;
+  font-size: clamp(12px, 1.5vw, 14px);
   color: #888;
   line-height: 1.7;
-  margin-bottom: 48px;
+  margin-bottom: 40px;
+  max-width: 90%;
 }
 
 .time-display {
   margin-bottom: 48px;
-}
-
-.deviation-desc {
-  font-size: 14px;
-  color: #888;
-  line-height: 1.7;
-  margin-bottom: 35px;
 }
 
 .time-display {
