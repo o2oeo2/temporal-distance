@@ -824,9 +824,15 @@ body {
   padding-top: 32px;
 }
 @media (max-width: 480px) {
+  .main-content h1 {
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+
   .result-popup {
+    align-items: flex-start;
     overflow-y: auto;
-    padding: 20px 0;
+    padding: 60px 0 40px;
     box-sizing: border-box;
   }
 
@@ -834,8 +840,9 @@ body {
     padding: 32px 24px;
     min-width: unset;
     width: 90vw;
-    max-height: 80vh;
+    max-height: none;
     gap: 12px;
+    margin: auto;
   }
 
   .result-val {
