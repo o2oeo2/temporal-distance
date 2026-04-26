@@ -1,11 +1,13 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
 // iOS Safari vh fix
 document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 window.addEventListener('resize', () => {
   document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
 });
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDW4o6zfkA7zbuBw4_MHG0NpLDOry9lWEs",
