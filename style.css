@@ -830,9 +830,10 @@ body {
 }
 @media (max-width: 480px) {
 .main-content {
-  padding: 40px 24px 120px;
+  padding: 24px;
   gap: 24px;
   min-height: calc(var(--vh, 1vh) * 100);
+  justify-content: space-between;
 }
 
   .main-content h1 {
