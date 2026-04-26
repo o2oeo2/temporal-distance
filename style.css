@@ -830,25 +830,18 @@ body {
 @media (max-width: 480px) {
   .main-content h1 {
     font-size: 28px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
   }
-
   .result-popup {
-    align-items: flex-start;
-    overflow-y: auto;
-    padding: 60px 0 40px;
-    box-sizing: border-box;
+    padding: 24px 0;
   }
-
   .result-box {
     padding: 32px 24px;
     min-width: unset;
     width: 90vw;
-    max-height: none;
     gap: 12px;
-    margin: auto;
+    margin: 0 auto;
   }
-
   .result-val {
     font-size: 28px;
   }
