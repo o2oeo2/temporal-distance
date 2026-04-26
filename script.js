@@ -1,3 +1,9 @@
+// iOS Safari vh fix
+document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+window.addEventListener('resize', () => {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+});
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
@@ -206,7 +212,9 @@ function submitTime() {
   document.getElementById('result-your-time').textContent = userTime;
   document.getElementById('result-avg-time').textContent = avg;
   document.getElementById('result-diff').textContent = diff;
-  document.getElementById('result-popup').classList.add('active');
+ const resultPopup = document.getElementById('result-popup');
+resultPopup.classList.add('active');
+resultPopup.scrollTop = 0;
 }
 
 function closeResultPopup() {
