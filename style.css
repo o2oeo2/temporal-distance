@@ -823,3 +823,16 @@ body {
   border-top: 1px solid #e0e0e0;
   padding-top: 32px;
 }
+@media (max-width: 480px) {
+  .result-box {
+    padding: 32px 24px;
+    min-width: unset;
+    width: 90vw;
+    max-height: 80vh;
+    gap: 12px;
+  }
+
+  .result-val {
+    font-size: 28px;
+  }
+}
