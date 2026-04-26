@@ -831,7 +831,8 @@ body {
   .main-content {
   padding: 40px 24px 100px;
   gap: 24px;
-  min-height: unset;
+   min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
   .main-content h1 {
